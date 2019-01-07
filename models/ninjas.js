@@ -9,7 +9,7 @@ const NinjaSchema = new Schema({
         required: [true, 'Name field is required']
     },
     rank: {
-        type:String
+        type: String
     },
     available: {
         type: Boolean,
@@ -19,6 +19,6 @@ const NinjaSchema = new Schema({
 });
 
 //creates a collection called ninjas; our model
-const Ninja = mongoose.model('ninja',NinjaSchema);
+const Ninja = mongoose.model('ninja', NinjaSchema);
 
 module.exports = Ninja;

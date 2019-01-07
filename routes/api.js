@@ -1,30 +1,29 @@
 const express = require('express');
 const router = express.Router();
-
+const Ninja = require('../models/ninja');
 //get a list of ninjas from the database
-router.get('/ninjas', function(req,res){
-    res.send({type:'GET'});
+router.get('/ninjas', function(req, res) {
+    res.send({ type: 'GET' });
 });
 
 
 //add a new ninja to the db
-router.post('/ninjas', function(req,res){
-    console.log(req.body);
-    res.send({
-        type:'POST',
-        name: req.body.name,
-        rank: req.body.rank
+router.post('/ninjas', function(req, res) {
+    //creates a new ninja locally
+    Ninja.create(req.body).then(function(ninja) {
+        res.send(ninja);
     });
 });
 
+
 //update a ninja already in the db
-router.pull('/ninjas/:id', function(req,res){
-    res.send({type:'PULL'});
+router.pull('/ninjas/:id', function(req, res) {
+    res.send({ type: 'PULL' });
 });
 
 //delete a ninja from the db
-router.delete('/ninjas/:id', function(req,res){
-    res.send({type:'DELETE'});
+router.delete('/ninjas/:id', function(req, res) {
+    res.send({ type: 'DELETE' });
 });
 
 module.exports = router;
